@@ -148,4 +148,5 @@ commands will detect it and remind you to do so if necessary.
 root@ubuntuserverdocker:~/aws-terraform/terraform-aws-ins#
 ```
 # References:
-[dependency-lock](https://www.terraform.io/docs/language/dependency-lock.html)
+- [Version Constraint](https://www.terraform.io/docs/language/expressions/version-constraints.html)
+- [dependency-lock](https://www.terraform.io/docs/language/dependency-lock.html)

@@ -1,5 +1,34 @@
 # Terraform new block called terraform settings
 - sample file which is having terraform and provider block.
+  - Terraform block contains terraform settings, which also has required providers it will use to provision your infrastucture.
+  - Provider block contains configuration specific to provider like AWS, Azure etc.,
+  - A provider is a plugin that terraform uses to create and manage your resources.
+  - Multi-provider configuration:
+    - Inorder to define multiple configurations for a same provider.
+    - If we want one resource to be created in Region ```us-east-1``` and another resource in Region ```us-east-2```.
+    ```
+    terraform {
+      required_providers {
+        aws = {
+          source  = "hashicorp/aws"
+          version = "~> 3.0, <4.0"
+        }
+      required_version = ">= 0.14.9"
+      }
+    }
+    # The default provider configuration; resources that begin with `aws_` will use
+    # it as the default, and it can be referenced as `aws`.
+    provider "aws" {
+      region = "us-east-1"
+    }
+
+    # Additional provider configuration for west coast region; resources can
+    # reference this as `aws.west`.
+    provider "aws" {
+      alias  = "west"
+      region = "us-west-2"
+    }
+    ```
 ```
 root@ubuntuserverdocker:~/aws-terraform/terraform-aws-instances# cat provider.tf
 terraform {
@@ -8,6 +37,7 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 3.0, <4.0"
     }
+  required_version = ">= 0.14.9"
   }
 }
 
@@ -28,6 +58,23 @@ root@ubuntuserverdocker:~/aws-terraform/terraform-aws-instances# cat ~/.aws/conf
 [default]
 region = us-east-1
 root@ubuntuserverdocker:~/aws-terraform/terraform-aws-instances#
+```
+
+- Lets create a resource block in separate file ```main.tf```, which will create a resource as specified in configuration file.
+```
+resource "aws_instance" "web" {
+  ami           = "ami-0c2b8ca1dad447f8a"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "WebApp-terraform"
+  }
+}
+
+How to get AMI ID?
+aws console --> EC2 Dashboard --> Instances --> Launch instances --> choose an AMI --> get the latest AMI ID from there as per OS
+How to check instance_type?
+aws console --> EC2 Dashboard --> Instance Types --> Free trier (t2.micro)
 ```
 
 - Now run ```terraform plan``` to see if the resources which we are trying to create has no issue and as expected before we actaully create it.
@@ -82,3 +129,9 @@ root@ubuntuserverdocker:~/aws-terraform/terraform-aws-instances#
 
 - validate the resource created EC2 by login to ```AWS Console```.
 - Now destroy the resource created on the target provider by executing ```terraform destroy -auto-approve```.
+
+# References:
+- [Configuration language](https://www.terraform.io/docs/language/index.html)
+- [Configuration Syntax](https://www.terraform.io/docs/language/syntax/configuration.html)
+- [Providers](https://www.terraform.io/docs/language/providers/index.html)
+- [Registry](https://registry.terraform.io/)

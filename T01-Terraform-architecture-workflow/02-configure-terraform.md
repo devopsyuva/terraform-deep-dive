@@ -1,6 +1,6 @@
 # Terraform Language Syntax
-
-- Terraform uses resource block to create Intrasture object (For AWS: EC2, VPC, S3 etc.,) on respective provider like AWS, Azure, GCP etc., mentioned in provider block.
+- 
+- Terraform uses resource block to create Intrasture (For AWS: EC2, VPC, S3 etc.,) services on respective provider like AWS, Azure, GCP etc., mentioned in provider block.
 ```
 resource "aws_vpc" "main" {
   cidr_block = var.base_cidr_block
