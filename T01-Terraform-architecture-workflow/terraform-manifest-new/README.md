@@ -1,6 +1,26 @@
 # Terraform new block called terraform settings
 - sample file which is having terraform and provider block.
   - Terraform block contains terraform settings, which also has required providers it will use to provision your infrastucture.
+  - Each Terraform module must declare which providers it requires under required_provider block, so that Terraform can install and use them.
+```
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "=> 3.5"
+    }
+  }
+}
+
+#we can declare multple conditions to version as mentioned below
+= (or no operator): Allows only one exact version number. Cannot be combined with other conditions.
+
+!=: Excludes an exact version number.
+
+>, >=, <, <=: Comparisons against a specified version, allowing versions for which the comparison is true. "Greater-than" requests newer versions, and "less-than" requests older versions.
+
+~>: Allows only the rightmost version component to increment. For example, to allow new patch releases within a specific minor release, use the full version number: ~> 1.0.4 will allow installation of 1.0.5 and 1.0.10 but not 1.1.0. This is usually called the pessimistic constraint operator.
+```
   - Provider block contains configuration specific to provider like AWS, Azure etc.,
   - A provider is a plugin that terraform uses to create and manage your resources.
   - Multi-provider configuration:
@@ -130,8 +150,10 @@ root@ubuntuserverdocker:~/aws-terraform/terraform-aws-instances#
 - validate the resource created EC2 by login to ```AWS Console```.
 - Now destroy the resource created on the target provider by executing ```terraform destroy -auto-approve```.
 
-# References:
+## References:
 - [Configuration language](https://www.terraform.io/docs/language/index.html)
 - [Configuration Syntax](https://www.terraform.io/docs/language/syntax/configuration.html)
 - [Providers](https://www.terraform.io/docs/language/providers/index.html)
 - [Registry](https://registry.terraform.io/)
+- [version constraints](https://www.terraform.io/docs/language/expressions/version-constraints.html)
+- [Requirements](https://www.terraform.io/docs/language/providers/requirements.html)

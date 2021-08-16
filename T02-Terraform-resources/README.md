@@ -1,0 +1,33 @@
+# Terraform AWS resources creation
+- First lets define the AWS provider details in file "provider.tf" with sections mentioned below:
+  - Provider Requirements
+  - Provider Configuration
+  - Dependency lock file
+- When ever we have changed the version under required_providers, we need to run command mentioned below:
+```
+#terraform init --upgrade
+```
+- After that, we have create a resources on AWS (current provider for this examples) like Instances, VPC etc.,
+- We have created single file "main.tf" for all resources.
+- Final task, is to init, plan and apply.
+```
+#terraform init
+#terraform plan
+#terraform apply [-auto-approve]
+```
+- Check the resources on respective AWS console with the resources created.
+- Cleanup all after successful creation
+```
+#terraform destroy -auto-approve
+```
+- From terraform registry (registry.terraform.io) we can download both providers and modules.
+- Terraform provider badges to official providers and modules which are owned and maintained by terraform
+  - Official badge
+  - Verified badge
+  - Community badge
+  - Archived badge
+
+## Note
+- **source** section in required_providers block of terraform settings will download to local machine from where we run #terraform commands
+- Source address syntax #[\<HOSTNAME\>\/]\<NAMESPACE\>/\<TYPE\>
+  - Example for hashicorp registry #registry.terraform.io/hashicorp/aws

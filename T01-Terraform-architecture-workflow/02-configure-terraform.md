@@ -1,6 +1,6 @@
 # Terraform Configuration Syntax
 - Terraform configuration files are plain text files which ends with **filename.tf** as extension.
-- **HCL(Hashicorp Language)**
+- **HCL(Hashicorp Configuration Language)**
 - Terraform uses resource block to create Infrastructure (For AWS: EC2, VPC, S3 etc.,) services on respective provider like AWS, Azure, GCP etc., mentioned in provider block.
 ```
 resource "aws_vpc" "main" {
