@@ -9,7 +9,7 @@
 ```
 - After that, we have create a resources on AWS (current provider for this examples) like Instances, VPC etc.,
 - We have created single file "main.tf" for all resources.
-- Final task, is to init, plan and apply.
+- Final task is to run init, plan and apply.
 ```
 #terraform init
 #terraform plan
@@ -27,7 +27,38 @@
   - Community badge
   - Archived badge
 
+# AWS authentication types:
+- Static credentials
+- Environment variables
+- Shared credentials/configuration file
+- CodeBuild, ECS, and EKS Roles
+- EC2 Instance Metadata Service (IMDS and IMDSv2)
+
+# Terraform Resources
+- **Language Syntax**
+- **Resource Block**
+  - create
+  - update
+  - re-create
+  - destroy
+- **Resource Behaviour**
+- **State Fundamentals**
+- **Resource meta-data arguments**
+  - depends_on
+  - count
+  - for_each
+  - provider
+  - lifecycle
+    - create_before_destroy
+    - prevent_destroy
+    - ignore_changes
+- **Provisioners and Connections**
+
 ## Note
 - **source** section in required_providers block of terraform settings will download to local machine from where we run #terraform commands
 - Source address syntax #[\<HOSTNAME\>\/]\<NAMESPACE\>/\<TYPE\>
   - Example for hashicorp registry #registry.terraform.io/hashicorp/aws
+
+## References
+- [AWS Authentication](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
+- [Resources Overview](https://www.terraform.io/docs/language/resources/index.html)
