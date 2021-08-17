@@ -1,4 +1,5 @@
 # depends_on demo creation flow
+- Create key to ssh into instance from our machine in AWS console
 - Create VPC
 - Create Subnets (Public and Private)
 - Create Internet Gateway and attach it to VPC
@@ -9,4 +10,4 @@
 - Launch Instance on above specified resources and install web server
 - Create EIP, which depends_on IGW
 ## Note:
-- Destroy everything (#terraform destroy and rm -rf .terraform* .terraform.tfstate*)
+- Destroy everything (#terraform destroy and rm -rf .terraform* terraform.tfstate*)
