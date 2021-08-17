@@ -7,3 +7,6 @@
 - Associate Public subnet to public route table and Private subnet to private route table
 - Create a Security group to VPC to allow 22 and 80 port inbound rule
 - Launch Instance on above specified resources and install web server
+- Create EIP, which depends_on IGW
+## Note:
+- Destroy everything (#terraform destroy and rm -rf .terraform* .terraform.tfstate*)
