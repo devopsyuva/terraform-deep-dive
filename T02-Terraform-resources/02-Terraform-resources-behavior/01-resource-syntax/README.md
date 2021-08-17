@@ -15,5 +15,9 @@
 - Now gohead and create the resource using **terraform create \[-auto-approve\]**.
   - It will create a file called ".terraform.tfstate".
   - This file is reference to the actual resource created on the provider.
-  - +create,-destroy,-/+update.
+  - It can be stored in remote location as well with locking.
+  - +create,-destroy,~update-in-place,-/+recreate. These details can be seen in #terraform plan.
+  - **Desired state:** What resource to be created on the provider as per .tf configuration files.
+  - **Current state:** resources that are created on the target provider.
 - After all verification are done, if you want to cleanup the resources created by terraform on target provider execute command **terraform destroy**.
+- Additionally, we can remove the files "rm -rf .terraform*" and "rm -rf .terraform.tfstate*".
