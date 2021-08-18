@@ -9,6 +9,7 @@
 - Implement complex type constructors like List & Map in Input variables.
 - Implement custom Validation rules in variables.
 - Protect Sensitive Input variables.
+- File Function
 
 # Terraform Variable Definition Precendence
 - Terraform loads variables in the following order, with later sources taking precedence over earlier ones:
@@ -20,3 +21,4 @@
 
 ## References
 - [Input Variables](https://www.terraform.io/docs/language/values/variables.html)
+- [File Function](https://www.terraform.io/docs/language/functions/file.html)
