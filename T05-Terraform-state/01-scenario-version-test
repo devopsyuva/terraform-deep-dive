@@ -1,0 +1,12 @@
+#terraform init
+#terraform validate
+#terraform fmt
+#terraform plan --> check if terraform.tfstate file was created either local or remote(s3)
+#terraform apply -auto-approve --> Now check on local(which should not create) and remote s3 backet "terraform-statefile-sudheer"
+
+versioning test
+#update instance_type to some other value to check the versioning of s3 bucket state file.
+#terraform plan
+#terraform apply -auto-approve --> check in s3 bucket if two versions are available.
+
+#Note: Disable DynamoDB section for remote store
