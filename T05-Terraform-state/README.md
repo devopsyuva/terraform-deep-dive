@@ -56,5 +56,6 @@ provider "aws" {
 - terraform apply target
 
 ### References
+- [Overview](https://www.terraform.io/docs/cli/state/index.html)
 - [AWS state Locking and Store](https://www.terraform.io/docs/language/settings/backends/s3.html)
 - [Azure State Locking and Store](https://docs.microsoft.com/en-us/azure/developer/terraform/store-state-in-azure-storage?tabs=azure-cli)
