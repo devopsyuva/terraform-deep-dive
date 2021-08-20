@@ -10,5 +10,23 @@
     - prevent_destroy
     - ignore_changes
   - **provisioners & connections:** For taking extra actions after resource creation (Example: install some app on server or do something on local desktop after resource is created at remote destination)
+
+# Multiple Provisioners of various types
+- By default, prvisioners run when the resources are defined with in created.
+- Creation-time provisioners only run during creation, not during updating or any other lifecycle.
+- They are meant as a means to perform bootstrapping of a system.
+- If a creation-time provisioner fails, the resource is marked as tainted.
+- A tainted resource will be planned for destruction and recreation upon the next terraform apply.
+- Terraform does this because a failed provisioner can leave a resource in a semi-configured state.
+- Because Terraform can't reason about what the provisioner does, the only way to ensure peoper creation of a resource is to recretae it. This is tainting.
+- You can change this behavior by setting the on_failure attribute.
+```
+provisioner "file" {
+  source = "apps/index.html"
+  destination = "/tmp/index.html"
+  on_failure = continue #fail
+}
+```
+
 ## References
 - [Meta-arguments](https://www.terraform.io/docs/language/meta-arguments/depends_on.html)
