@@ -2,6 +2,7 @@
 **Infrastructure as Code (IaC) is the managing and provisioning of infrastructure through code instead of through manual processes.**
 
 Some of the tools listed below which falls under IaC:
+- Terraform
 - AWS CloudFormation
 - Puppet
 - Chef
@@ -11,7 +12,7 @@ Some of the tools listed below which falls under IaC:
 # Introduction to Terraform
 **Terraform is an infrastructure as code (IaC) tool that allows you to build, change, and version infrastructure safely and efficiently. This includes low-level components such as compute instances, storage, and networking, as well as high-level components such as DNS entries, SaaS features, etc. Terraform can manage both existing service providers and custom in-house solutions.**
 - we can automate and manage infrastructure
-- OpenSoure and uses declarative language
+- OpenSoure and uses declarative language(Hashicorp Configuration Language)
 
 # Key features of Terraform
 - **IaC** we can describe our required infrastucture on specific providers like AWS, Azure, GCP, Kubernetes etc., using **Terraform High-level language** in human-readable, declarative configuration files.
