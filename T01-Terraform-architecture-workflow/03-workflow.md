@@ -1,4 +1,9 @@
-# initialization
+# Terraform workflow
+
+- ![workflow aws](../src/images/terraform-flow.png)
+- ![workflow azure](../src/images/terraform-flow-azure.png)
+
+## initialization
 - After creating the basic provider block for respective provider to build the infrastucture. Terraform need to initialize a working directory containing Terraform configuration files.
 - It will be the first command that we have to execute once/multiple times after writing the terraform configuration files (.tf files).
 - It is always recommended to run multiple times, as it will bring the working directory up to date with the changes.
@@ -27,12 +32,12 @@ provider "aws" {
   region = "us-east-1"
 }
 ```
-## Terraform Authentication against the provider
-- Static credentials (No recommended by Terraform)
+### Terraform Authentication against the provider
+- Static credentials (Not recommended by Terraform)
 - Environment variables
 - Shared credentials/configuration files
 
-# Format and Validate terraform files
+## Format and Validate terraform files
 - its recommended to use consistent formatting as per best practices.
 ```
 terraform fmt
@@ -44,7 +49,7 @@ terraform fmt
 terraform validate
 ```
 
-# Planning
+## Planning
 - Terraform shows an execution plan before actual resources created, as a preview to check if it is expected or not and do necessary changes in the configuration files.
 ```
 terraform plan
@@ -54,27 +59,27 @@ terraform plan
 - Reading the current state of any already-existing remote objects to make sure that the Terraform state is up-to-date.
 - Comparing the current configuration to the prior state and noting any differences.
 
-# apply
+## apply
 - After successful plan command ```terraform plan```, we can create a resource by executing ```terraform apply [-auto-approve]``.
 - It will make your infrastructure ready as per the desired configuration files(.tf).
 - To override argument values if any, we can passing command line arguments while executing ```terraform apply -var=<>```.
 
-# destroy
+## destroy
 - Inorder to delete the resource on the target provider.
 - ```terraform destroy [-auto-approve]``` command will remove all the resources that are create on the target provider.
 
-# cleanup
+## cleanup
 - Manually remove all files and directory in that workspace to recreate the resource from scratch.
 - files and directories that needs to be removed:
 ```
-rm -rf .terraform
-rm -rf .terraform.tfstate
+rm -rf .terraform                    --> which stores provider plugins
+rm -rf .terraform.tfstate            --> current state of the target provider
 rm -rf .terraform.tftstate.backup
-rm -rf .terraform.tfstate.d
+rm -rf .terraform.tfstate.d          --> To store multiple state files, which works well for backend
 or
 rm -rf .terraform*
 ```
 
-# References:
+### References:
 - [Initialize working directory](https://www.terraform.io/docs/cli/init/index.html)
 - [Provisioning Infrastucture](https://www.terraform.io/docs/cli/run/index.html)

@@ -59,7 +59,7 @@ provider "aws" {
   region = "us-west-2"
 }
 ```
-- From above example, we could see that default provider resource region will be "us-east1" and for ther resources it uses "us-east-2"
+- From above example, we could see that default provider resource region will be "us-east1" and for resources it uses "us-east-2"
 
 - **terraform backend:** It is used to store the state files in the remote location.
 ```

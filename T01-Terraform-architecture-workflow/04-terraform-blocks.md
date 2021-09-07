@@ -1,4 +1,5 @@
 # Terraform Fundamental blocks
+
 ## Terraform Settings block
 ```
 terraform {
@@ -11,6 +12,7 @@ terraform {
     required_version = ">= 0.14.9"
 }
 ```
+
 ## Terraform Provider block
 ```
 provider "aws" {
@@ -18,6 +20,7 @@ provider "aws" {
     profile = "default"
 }
 ```
+
 ## Terraform Resource block
 ```
 resource "aws_instance" "web" {
@@ -30,8 +33,8 @@ resource "aws_instance" "web" {
 }
 ```
 
-# Terraform Variable block
-## Terraform Input Variables block
+## Terraform Variable block
+### Terraform Input Variables block
 ```
 variable "instance_name" {
   description = "Value of the Name tag for the EC2 instance"
@@ -51,7 +54,8 @@ variable "instance_type" {
   default = "t3.micro"
 }
 ```
-## Terraform Output Values block
+
+### Terraform Output Values block
 - Optional arguments:
   - **description:** you can briefly describe the purpose of each value using the optional description argument.
   - **sensitive:** To suppress values in CLI output
@@ -71,15 +75,27 @@ output "instance_public_ip" {
   value       = aws_instance.web.public_ip
 }
 ```
-## Terraform Local Values block
+
+### Terraform Local Values block
 - Local values can be helpful to avoid repeating the same values or expressions multiple times in a configuration, but if overused they can also make a configuration hard to read by future maintainers by hiding the actual values used.
 - Use local values only in moderation, in situations where a single value or result is used in many places and that value is likely to be changed in future.
 ```
+locals {
+  # Ids for multiple sets of EC2 instances, merged together
+  instance_ids = concat(aws_instance.blue.*.id, aws_instance.green.*.id)
+}
 
+locals {
+  # Common tags to be assigned to all resources
+  common_tags = {
+    Service = local.service_name
+    Owner   = local.owner
+  }
+}
 ```
 
-# Terraform calling/referencing block
-## Data Sources block
+## Terraform calling/referencing block
+### Data Sources block
 ```
 # Get latest AMI ID for Amazon Linux2 OS
 data "aws_ami" "amzlinux" {
@@ -103,6 +119,12 @@ data "aws_ami" "amzlinux" {
   }
 }
 ```
-## Modules block
+### Modules block
 ```
+module "consul" {
+  source  = "hashicorp/consul/aws"
+  version = "0.0.5"
+
+  servers = 3
+}
 ```

@@ -90,7 +90,7 @@ root@ubuntuserverdocker:~# aws configure
 Note: give AWS user secret access key and access key (Optional: Region)
 ```
 
-4) Excute commands like **#aws s3 ls** command and see it was able to authenticate and fetch the details of buckts if any from the account
+4) Excute commands like **#aws s3 ls** command and see it was able to authenticate and fetch the details of buckets if any from the account
 
 # References
 - [AWS Free trail](https://aws.amazon.com/free/)

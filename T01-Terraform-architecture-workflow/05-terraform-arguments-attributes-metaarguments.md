@@ -12,5 +12,5 @@
 
 ## References
 - [Arguments](https://www.terraform.io/docs/language/syntax/configuration.html#arguments)
-- [Attributes](https://learn.hashicorp.com/tutorials/terraform/resource?in=terraform%2Fconfiguration-language)
+- [Attributes](https://learn.hashicorp.com/tutorials/terraform/resource?in=terraform/configuration-language#review-the-random_pet-resource)
 - [Meta-arguments](https://www.terraform.io/docs/language/resources/syntax.html#meta-arguments)
