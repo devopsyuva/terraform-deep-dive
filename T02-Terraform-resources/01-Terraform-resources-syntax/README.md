@@ -1,5 +1,5 @@
 # Terraform Resource Syntax
-- Inorder to create resources on specific provider, we have define resource block in "main.tf" file or any specific file with .tf as extension.
+- Inorder to create resources on specific provider, we have to define resource block in "main.tf" file or any specific file with .tf as extension.
 - Top/Parent level blocks like resource, provider etc., and Low/Child level blocks like tags, provisioners etc.,
 ```
 resource "aws_vpc" "main" {

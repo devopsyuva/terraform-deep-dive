@@ -9,15 +9,15 @@ terraform {
   # S3 bucket for storing state file in remote backend
   backend "s3" {
     bucket = "terraform-statefiles-sudheer"
-    key = "dev/terraform.tfstate"
+    key = "Prod/terraform.tfstate"
     region = "us-east-1"
 
-    # State Locking
+    # State Locking using DynamoDB Table
     dynamodb_table = "terraform-dev-state-table"
   }
 }
 
 provider "aws" {
-    region = "us-east-1"
+    region = var.aws_region
     profile = "default"
 }

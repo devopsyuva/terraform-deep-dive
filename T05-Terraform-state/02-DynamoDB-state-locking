@@ -1,5 +1,0 @@
-#terraform init
-#terraform validate
-#terraform fmt
-#terraform plan --> check if it displays message on terminal "Aaquring state lock" and "Releasing state lock".
-#terraform apply -auto-approve

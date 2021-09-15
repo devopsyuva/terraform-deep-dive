@@ -1,7 +1,6 @@
 # Terraform workflow
 
-- ![workflow aws](../src/images/terraform-flow.png)
-- ![workflow azure](../src/images/terraform-flow-azure.png)
+- ![workflow](../src/images/terraform-workflow.png)
 
 ## initialization
 - After creating the basic provider block for respective provider to build the infrastucture. Terraform need to initialize a working directory containing Terraform configuration files.
@@ -73,11 +72,11 @@ terraform plan
 - files and directories that needs to be removed:
 ```
 rm -rf .terraform                    --> which stores provider plugins
-rm -rf .terraform.tfstate            --> current state of the target provider
-rm -rf .terraform.tftstate.backup
-rm -rf .terraform.tfstate.d          --> To store multiple state files, which works well for backend
+rm -rf terraform.tfstate            --> current state of the target provider
+rm -rf terraform.tftstate.backup
+rm -rf terraform.tfstate.d          --> To store multiple state files, which works well for backend
 or
-rm -rf .terraform*
+rm -rf .terraform* terraform*
 ```
 
 ### References:

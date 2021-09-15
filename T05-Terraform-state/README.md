@@ -3,7 +3,7 @@
 - Terraform State Locking
 
 ## Terraform backend
-- Backend are responsible for storing state and providing and API for state locking.
+- Backend are responsible for storing state and providing API for state locking.
   - AWS S3 Bucket for terraform state storage.
   - AWS DynamoDB for terraform state locking.
 - Differences between Local state file and Remote state file.
@@ -16,7 +16,7 @@
 - You can disable state locking for most commands with the **-lock** flag but it not receommended.
 - If acquiring the lock file takes long time then expected, Terraform will output a status message.
 - If terraform doesn't output a message, state locking is still occuring if your backend supports it.
-- Terraform has a fore-unlock command to manually unlock the state if unlocking failed.
+- Terraform has a force-unlock command to manually unlock the state if unlocking failed.
 ```
 terraform {
   required_version = ">= 1.0.3"
@@ -43,7 +43,7 @@ provider "aws" {
 }
 ```
 - **Terraform Cloud and Terraform Enterprise** always use their own state storage when performaing terraform runs, so they ignore any backend block in the configuration.
-- For **Terraform Cloud** users also it is always recommended to use backend block in Terraform configuration for commands like **terraform taint** which can be executed only using Terraform CLI.
+- For **Terraform Cloud** users it is always recommended to use backend block in Terraform configuration for commands like **terraform taint** which can be executed only using Terraform CLI.
 
 ## Terraform commands for state perspective
 - terraform show
