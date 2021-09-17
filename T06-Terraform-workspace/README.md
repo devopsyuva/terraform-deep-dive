@@ -15,10 +15,10 @@
   - COS
   - Manta
   - Remote
-- Terraform starts with a single workspace named "default". This workspace is special both because it is the default and also because it cannot ever be deleted. If you've never explicitly used workspaces, then you've only ever worked on the "default" workspace.
+- Terraform starts with a single workspace named "default". This workspace is special because it is the default and also because it cannot be deleted. If you've never explicitly used workspaces, then you've only ever worked on the "default" workspace.
 ```
 # How to create a new workspace?
-terraform workspace new test-demo
+- terraform workspace new test-demo
 Created and switched to workspace "test-demo"!
 
 You're now on a new, empty workspace. Workspaces isolate their state,
@@ -42,6 +42,7 @@ resource "aws_instance" "example" {
   # ... other arguments
 }
 ```
+
 ## Usecase of terraform workspace creation
 - A common use for multiple workspaces is to create a parallel, distinct copy of a set of infrastructure in order to test a set of changes before modifying the main production infrastructure. For example, a developer working on a complex set of infrastructure changes might create a new temporary workspace in order to freely experiment with changes without affecting the default workspace.
 
@@ -58,6 +59,7 @@ resource "aws_instance" "example" {
 - Terraform CLI workspace are completely different from Terraform Cloud workspace.
 - For a given workspace directory, only one workspace can be selected at a time.
 - Most Terraform commands (including provisioning and state manipulation commands) only interact with the currently selected workspace.
+
 ### References
 - [Workspaces](https://www.terraform.io/docs/language/state/workspaces.html)
 - [Managing Workspace](https://www.terraform.io/docs/cli/workspaces/index.html)

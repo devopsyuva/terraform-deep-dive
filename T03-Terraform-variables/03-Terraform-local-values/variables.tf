@@ -1,6 +1,11 @@
 local {
     envionment-name = ${var.tag_name}
 }
+variable "tag_name" {
+    description = "Default tag will be added to all resource when used"
+    type = string
+    default = "terraform-webapp-demo"
+}
 variable "aws_region" {
     description = "Region on which resources will be created"
     type = string

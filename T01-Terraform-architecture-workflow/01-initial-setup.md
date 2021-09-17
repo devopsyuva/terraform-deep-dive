@@ -71,6 +71,25 @@ on linux_amd64
 root@ubuntuserverdocker:~#
 ```
 
+# Install Terraform CLI package on Windows 10 machine
+- We need to open CMD/Poweshell as administrator.
+- Then run below command to install "chocolatey" which is a package manager for Windows OS.
+```
+>Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+```
+- [Install Chocolatey](../src/images/windows-terraform-install0.PNG)
+
+- Now after succesful completion, lets install latest terraform package as mentioned below using "choco" CLI,
+```
+>choco install terraform
+```
+- [Install Terraform](../src/images/windows-terraform-install1.PNG)
+- Lets verify terraform was installed successfully or not using below command.
+```
+>terraform --version
+```
+- [Terraform Version](../src/images/windows-terraform-install2.PNG)
+
 # Install AWS cli to configure AWS credentials to run terraform API calls
 
 1) Download latest AWS cli package
@@ -92,7 +111,15 @@ Note: give AWS user secret access key and access key (Optional: Region)
 
 4) Excute commands like **#aws s3 ls** command and see it was able to authenticate and fetch the details of buckets if any from the account
 
-# References
+# AWS Command Line Interface on Windows
+- We are using choco cli tool to install "awscli" package as well.
+```
+>choco install awscli
+```
+- [AWS CLI Windows](../src/images/windows-aws-cli.PNG)
+
+## References
 - [AWS Free trail](https://aws.amazon.com/free/)
 - [AWS cli](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 - [Terraform Download](https://www.terraform.io/downloads.html)
+- [Chocolatey](https://community.chocolatey.org/packages)
