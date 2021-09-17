@@ -2,6 +2,8 @@
 - Terraform State Storage
 - Terraform State Locking
 
+**Terraform state backends works on three principles like State Storage(Backend Storage), State Locking(Locking state files stored in shared location) and Operations/Runs --> Create, Read, Update, and destroy resources on respective provider.**
+
 ## Terraform backend
 - Backend are responsible for storing state and providing API for state locking.
   - AWS S3 Bucket for terraform state storage.
@@ -45,6 +47,13 @@ provider "aws" {
 - **Terraform Cloud and Terraform Enterprise** always use their own state storage when performaing terraform runs, so they ignore any backend block in the configuration.
 - For **Terraform Cloud** users it is always recommended to use backend block in Terraform configuration for commands like **terraform taint** which can be executed only using Terraform CLI.
 
+## Terraform Backend Types
+- Enhanced and Standard Backends
+- **Enhanced Backends:** can perform two tasks like store state and perform operations. Thefre are two enhanced backends: **local and remote.**
+  - Examples: Terraform Cloud and Terraform Enterprise
+- **Standard Backends:** they only store state, and rely on the local backend for performing operations.
+  - Examples: AWS S3, Azure RM, Consul, ETCD, and etc.,
+
 ## Terraform commands for state perspective
 - terraform show
 - terraform refresh
@@ -56,6 +65,6 @@ provider "aws" {
 - terraform apply target
 
 ### References
-- [Overview](https://www.terraform.io/docs/cli/state/index.html)
+- [Terraform State Manipulation](https://www.terraform.io/docs/cli/state/index.html)
 - [AWS state Locking and Store](https://www.terraform.io/docs/language/settings/backends/s3.html)
 - [Azure State Locking and Store](https://docs.microsoft.com/en-us/azure/developer/terraform/store-state-in-azure-storage?tabs=azure-cli)

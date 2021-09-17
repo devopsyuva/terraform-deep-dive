@@ -60,3 +60,4 @@ resource "aws_instance" "example" {
 - Most Terraform commands (including provisioning and state manipulation commands) only interact with the currently selected workspace.
 ### References
 - [Workspaces](https://www.terraform.io/docs/language/state/workspaces.html)
+- [Managing Workspace](https://www.terraform.io/docs/cli/workspaces/index.html)
