@@ -107,6 +107,25 @@ root@ubuntuserverdocker:~# ./aws/install -i /usr/local/aws-cli -b /usr/local/bin
 ```
 root@ubuntuserverdocker:~# aws configure
 Note: give AWS user secret access key and access key (Optional: Region)
+
+#Sample Output
+root@ubuntuserverdocker:~# aws configure
+AWS Access Key ID [****************W66R]: AKIAQIADYHGSVLI773ZG
+AWS Secret Access Key [****************4fAE]: vSjyB8nJxxxxx/92w18oxxxxxxxxxxxx
+Default region name [us-east-1]:
+Default output format [None]:
+root@ubuntuserverdocker:~# ls .aws/
+config       credentials
+root@ubuntuserverdocker:~# ls -l .aws/credentials
+-rw------- 1 root root 116 Sep 18 02:55 .aws/credentials
+root@ubuntuserverdocker:~# cat .aws/config
+[default]
+region = us-east-1
+root@ubuntuserverdocker:~# cat .aws/credentials
+[default]
+aws_secret_access_key = vSjyB8nJxxxxx/92w18oxxxxxxxxxxxx
+aws_access_key_id = AKIAQIADYHGSVLI773ZG
+root@ubuntuserverdocker:~#
 ```
 
 4) Excute commands like **#aws s3 ls** command and see it was able to authenticate and fetch the details of buckets if any from the account

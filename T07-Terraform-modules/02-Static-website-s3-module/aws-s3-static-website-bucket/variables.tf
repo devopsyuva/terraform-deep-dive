@@ -19,7 +19,5 @@ variable "my_s3_tags" {
   default = {
     Terraform = "true"
     Environment = "dev"
-    newtag1 = "tag1"
-    newtag2 = "tag2"
   }
 }

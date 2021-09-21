@@ -9,6 +9,6 @@ output "ec2_instance_public_ip" {
 }
 
 output "ec2_instance_public_dns" {
-    value = "http://${module.ec2_cluster.*.public_dns}"
+    value = "http://module.ec2_cluster.*.public_dns"
     description = "EC2 instance Private DNS name"
 }
