@@ -10,3 +10,7 @@ resource "aws_instance" "web" {
     Name = local.environment-name
   }
 }
+
+/*
+tags = local.common_tags
+*/

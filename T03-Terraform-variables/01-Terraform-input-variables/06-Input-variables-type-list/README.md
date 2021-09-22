@@ -31,3 +31,4 @@ var.ec2_instance_tags or to call specific value of a key var.ec2_instance_tags["
 
 ## References
 - [Input list type](https://www.terraform.io/docs/language/values/variables.html)
+- [Expressions Types and Values](https://www.terraform.io/docs/language/expressions/types.html)

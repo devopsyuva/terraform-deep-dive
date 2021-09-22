@@ -1,5 +1,5 @@
 local {
-    envionment-name = ${var.tag_name}
+    envionment-name = var.tag_name
 }
 variable "tag_name" {
     description = "Default tag will be added to all resource when used"
@@ -36,3 +36,12 @@ variable "tag_name" {
     type = string
     default = "terraform-webapp-demo"
 }
+
+/*
+locals {
+  common_tags = {
+      Name = "Nginx-server"
+      Env = "Web-Application"
+  }
+}
+*/

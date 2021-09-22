@@ -45,6 +45,8 @@
 - **State Fundamentals**
 - **Resource meta-data arguments**
   - depends_on
+    - if defined, must be a list of references to other resources or child modules in the same calling module.
+    - arbitrary expressions are not allowed in the depends_on arguments value, because its value must be known before Terraform knows resource relationships.
   - count
   - for_each
   - provider

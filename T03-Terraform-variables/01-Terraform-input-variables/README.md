@@ -11,6 +11,8 @@
 - Protect Sensitive Input variables.
 - File Function
 
+- [Terraform Variables](../../src/images/terraform-variables.png)
+
 # Terraform Variable Definition Precendence
 - Terraform loads variables in the following order, with later sources taking precedence over earlier ones:
   - Environment variables

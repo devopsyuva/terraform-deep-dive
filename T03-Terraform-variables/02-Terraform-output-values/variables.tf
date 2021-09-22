@@ -18,8 +18,3 @@ variable "inst_type" {
     type = string
     default = "t2.micro"
 }
-variable "inst_count" {
-    description = "No of EC2 instances that need to launched"
-    type = number
-    default = 1
-}

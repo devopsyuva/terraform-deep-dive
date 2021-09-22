@@ -3,7 +3,7 @@ This configuration will create 5 EC2 instances
 on AWS provider
 */
 resource "aws_instance" "web" {
-  ami           = "ami-0c2b8ca1dad447f8a"
+  ami           = "ami-09e67e426f25ce0d7" #Ubuntu 20.04 LTS Free Tier Image
   instance_type = "t2.micro"
   key_name = "terraform-demo"
   user_data = file("nginx-install.sh")

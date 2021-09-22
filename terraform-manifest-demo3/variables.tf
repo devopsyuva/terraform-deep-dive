@@ -3,3 +3,10 @@ variable "bucket_name" {
     type = string
     default = "sudheer-demo-static"
 }
+
+locals {
+  common_tags = {
+      Name = "Web-App"
+      Env  = "Production"
+  }
+}

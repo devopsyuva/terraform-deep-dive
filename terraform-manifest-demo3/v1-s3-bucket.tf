@@ -9,4 +9,5 @@ resource "aws_s3_bucket" "name" {
       index_document = "index.html"
       error_document = "error.html"
     } 
+    tags = local.common_tags
 }

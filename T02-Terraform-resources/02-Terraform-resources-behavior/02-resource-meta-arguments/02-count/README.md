@@ -5,4 +5,4 @@
 - count.index will be distinct index number(starts from 0) corresponding to this instance.
 - Instances are identified using index number starting from 0. For example: aws_instance.test-vm[0]
 - Modules support count from terraform v0.13.
-- A resource or module can't use both count and for_each at a time.
+- A resource or module can't use both **count and for_each** at a time.
