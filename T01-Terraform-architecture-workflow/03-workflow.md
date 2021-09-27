@@ -3,7 +3,7 @@
 - ![workflow](../src/images/terraform-workflow.png)
 
 ## initialization
-- After creating the basic provider block for respective provider to build the infrastucture. Terraform need to initialize a working directory containing Terraform configuration files.
+- After creating the basic terraform seetings/provider block for respective provider to build the infrastucture. Terraform need to initialize a working directory containing Terraform configuration files.
 - It will be the first command that we have to execute once/multiple times after writing the terraform configuration files (.tf files).
 - It is always recommended to run multiple times, as it will bring the working directory up to date with the changes.
 - ```terraform init``` command creates directory named with ```.terraform```.

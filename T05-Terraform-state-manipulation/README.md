@@ -4,6 +4,9 @@
 
 **Terraform state backends works on three principles like State Storage(Backend Storage), State Locking(Locking state files stored in shared location) and Operations/Runs --> Create, Read, Update, and destroy resources on respective provider.**
 
+- [Terraform Local State Storage](../src/images/terraform-state-remote.png)
+- [Terraform Remote State Storage](../src/images/terraform-state-remote-remote.png)
+
 ## Terraform backend
 - Backend are responsible for storing state and providing API for state locking.
   - AWS S3 Bucket for terraform state storage.
@@ -12,6 +15,7 @@
 - **Local State:** Multiple team members cannot update the infrastructure as they don't have access to state File. For which we need to store the state file in a share location.
 - **Remote State:** If two teams are running Terraform at same time, you may run into **race conditions** as multiple Terraform proccess make concurrent updates to the state files, leading to conflicts, data loss, and state file corruption.
 - To overcome above condition, state locking was added with the help of DynamoDB table.
+- [Terraform State Locking](../src/images/terraform-state-remote-locking.png)
 - **Note:** All backends doesn't support State locking, AWS S3 supports state locking.
 - State locking happends automatically on all operations that could write state.
 - If state locking fails, Terraform will not continue.
