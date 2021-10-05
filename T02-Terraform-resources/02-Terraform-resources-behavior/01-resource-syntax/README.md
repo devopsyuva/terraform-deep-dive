@@ -12,7 +12,7 @@
 - Then validate the configuration files for syntax check using command **terraform validate**.
 - Lets check the format and style on configuration files written to create the resources using command **terraform fmt**. When ever files are formated it will display the file names as output.
 - Now lets execute the plan/preview before actual resources created on the target provider using command **terraform plan**.
-- Now gohead and create the resource using **terraform create \[-auto-approve\]**.
+- Now gohead and create the resource using **terraform apply \[-auto-approve\]**.
   - It will create a file called ".terraform.tfstate".
   - This file is reference to the actual resource created on the provider.
   - It can be stored in remote location as well with locking.
