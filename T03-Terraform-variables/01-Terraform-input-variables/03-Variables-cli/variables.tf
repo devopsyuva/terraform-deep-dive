@@ -11,7 +11,7 @@ variable "az_name" {
 variable "ami_name" {
     description = "Latest AMI ID on us-east-1"
     type = string
-    default = "ami-0c2b8ca1dad447f8a"
+    default = "ami-09e67e426f25ce0d7"
 }
 variable "inst_type" {
     description = "Instance type used to launch EC2 Instance"

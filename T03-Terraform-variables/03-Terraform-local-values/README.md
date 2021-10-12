@@ -3,6 +3,7 @@
 - A local value assigns a name to an expression, so you can use that name multiple times within a module without repeating it.
 - A local values are like a functions temporary local variables.
 - Once a local value is declared, you can reference it in expressions as local.\<NAME\>.
+- Local values are immutable in runtime while executing terraform pla/apply/destroy.
 ```
 locals {
   # Ids for multiple sets of EC2 instances, merged together

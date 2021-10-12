@@ -3,8 +3,8 @@ variable "aws_region" {
     type = string
     default = "us-east-1"
 }
-variable "az_name" {
-    description = "Availability Zone name"
+variable "az_name"  {
+    description = "Availability Zone name should be region defined in aws_region variable"
     type = string
     default = "us-east-1a"
 }

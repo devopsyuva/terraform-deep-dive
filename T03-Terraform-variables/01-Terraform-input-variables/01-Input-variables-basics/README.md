@@ -17,6 +17,7 @@ var.aws_region = "us-east-1"
     - list(string)
     - number
     - bool
+    - map(string)
   - **description** - This specifies the input variable's documentation.
   - **validation** - A block to define validation rules, usually in addition to type constraints.
   - **sensitive** - Limits Terraform UI output when the variable is used in configuration.

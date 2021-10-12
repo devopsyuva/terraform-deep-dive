@@ -1,5 +1,5 @@
 # Terraform Output Values
-- Terraform output values are like the return values like a ny other tool/language.
+- Terraform output values are like the return values like any other tool/language.
 - A root module can use outputs to print certain values in the CLI output after running **terraform apply**.
 - A child module can use outputs to expose a subset of its resource attributes to a parent module.
 - When using remote state, root module outputs can be accessed by other configurations via a **terraform_remote_state data source**.
