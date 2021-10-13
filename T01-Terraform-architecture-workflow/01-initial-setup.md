@@ -137,8 +137,72 @@ root@ubuntuserverdocker:~#
 ```
 - [AWS CLI Windows](../src/images/windows-aws-cli.PNG)
 
+# Azure CLI configuration for terraform operations
+- Install az cli package on Ubuntu using below command
+```
+apt install azure-cli -y
+```
+- check az version installed with latest version
+```
+root@terraformworkstation:~/terraform-azure/nsg# az version
+This command is in preview. It may be changed/removed in a future release.
+{
+  "azure-cli": "2.0.81",
+  "azure-cli-core": "2.0.81",
+  "azure-cli-telemetry": "1.0.4",
+  "extensions": {
+    "azure-devops": "0.17.0"
+  }
+}
+root@terraformworkstation:~/terraform-azure/nsg#
+```
+- Now lets configure azure credentails using below command, open URL mentioned in any bowser and enter the code specified to activate.
+```
+root@terraformworkstation:~/terraform-azure/nsg# az login
+To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code SFG552Q9G to authenticate.
+[
+  {
+    "cloudName": "AzureCloud",
+    "id": "48170916-cf4c-44e5-aa40-a88b7f3af43a",
+    "isDefault": true,
+    "name": "Free Trial",
+    "state": "Enabled",
+    "tenantId": "c235cda8-f255-407a-89f8-bff5d3102a04",
+    "user": {
+      "name": "sudheer.reddy.duba@outlook.com",
+      "type": "user"
+    }
+  }
+]
+root@terraformworkstation:~/terraform-azure/nsg#
+```
+- Lets check if we are able to run cli commands of azure.
+```
+root@terraformworkstation:~/terraform-azure/nsg# az account list
+[
+  {
+    "cloudName": "AzureCloud",
+    "id": "48170916-cf4c-44e5-aa40-a88b7f3af43a",
+    "isDefault": true,
+    "name": "Free Trial",
+    "state": "Enabled",
+    "tenantId": "c235cda8-f255-407a-89f8-bff5d3102a04",
+    "user": {
+      "name": "sudheer.reddy.duba@outlook.com",
+      "type": "user"
+    }
+  }
+]
+root@terraformworkstation:~/terraform-azure/nsg#
+```
+- Should you have more than one Subscription, you can specify the Subscription to use via the following command:
+```
+az account set --subscription="SUBSCRIPTION_ID"
+```
 ## References
 - [AWS Free trail](https://aws.amazon.com/free/)
 - [AWS cli](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 - [Terraform Download](https://www.terraform.io/downloads.html)
 - [Chocolatey](https://community.chocolatey.org/packages)
+- [Azure Provider Info](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
+- [Azure CLI Install and Configure](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/azure_cli)
