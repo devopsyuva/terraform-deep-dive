@@ -12,9 +12,10 @@ aws_instance.web
 #terraform state show aws_instance.web
 
 #terraform state mv [--dry-run] aws_instance.web aws_instance.ec2_demo. This will update the state file as well not desired resource configuration files.
+
 It should create a backup file of terraform.tfstate as something like terraform.tfstate.116745629.backup
-It also renames the name of the resource in the state file
-Always run #terraform plan command to see if it causes any issue with the resource that are created on target.
+
+It also renames the name of the resource in the state file Always run #terraform plan command to see if it causes any issue with the resource that are created on target.
 
 #terraform state rm 'aws_instance.web'
 

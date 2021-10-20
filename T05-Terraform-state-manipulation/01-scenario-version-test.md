@@ -2,7 +2,7 @@
 
 ## Pre-requisite
 - Login to AWS Console with your root credentails or IAM user.
-- Navigate to AWS S3 on top middle serach bar.
+- Navigate to on top middle serach bar for "s3" service.
 - Go to Buckets --> Create bucket
 - General configuration
   - Bucket name: terraform-statefiles-sudheer (name should be unique across AWS S3)
