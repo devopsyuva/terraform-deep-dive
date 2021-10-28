@@ -28,7 +28,7 @@ cd terraform.tfstate.d
 ls -l --> should display dev directory as per name passed above
 cd dev && ls -l --> To check/list files in dev directory
 
-#Terraform pla and apply
+#Terraform plan and apply
 terraform plan --> will show as it creats only one instance since other than default workspace it uses 1
 
 terraform apply [-auto-approve]
