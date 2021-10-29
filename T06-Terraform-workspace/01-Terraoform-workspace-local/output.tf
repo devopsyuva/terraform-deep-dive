@@ -9,7 +9,7 @@ output "ec2_instance_public_ip" {
 }
 
 output "ec2_instance_public_dns" {
-    value = "http://${aws_instance.web.*.public_dns}"
+    value = "http://aws_instance.web.*.public_dns"
     description = "EC2 instance Private DNS name"
     #sensitive = true
 }

@@ -62,3 +62,107 @@ terraform workspace show
 terraform workspace delete dev --> First we have to delete the resources and then remove the workspace which results in dangling resources.
 terraform workspace show --> check if still that workspace exists
 ```
+
+## Reference sample module directory structure:
+```
+root@terraformworkstation:~/terraform-aws/modules/s3-module# tree -a ../
+../
+├── ami-datasource.tf
+├── instance.tf
+├── nginx-install.sh
+├── output.tf
+├── provider.tf
+├── s3-module
+├── security-group-rules.tf
+├── security-group.tf
+├── .terraform
+│   ├── modules
+│   │   ├── ec2_cluster
+│   │   │   ├── CHANGELOG.md
+│   │   │   ├── .chglog
+│   │   │   │   ├── CHANGELOG.tpl.md
+│   │   │   │   └── config.yml
+│   │   │   ├── .editorconfig
+│   │   │   ├── examples
+│   │   │   │   ├── basic
+│   │   │   │   │   ├── main.tf
+│   │   │   │   │   ├── outputs.tf
+│   │   │   │   │   ├── README.md
+│   │   │   │   │   ├── variables.tf
+│   │   │   │   │   └── versions.tf
+│   │   │   │   └── volume-attachment
+│   │   │   │       ├── main.tf
+│   │   │   │       ├── outputs.tf
+│   │   │   │       ├── README.md
+│   │   │   │       ├── variables.tf
+│   │   │   │       └── versions.tf
+│   │   │   ├── .git
+│   │   │   │   ├── branches
+│   │   │   │   ├── config
+│   │   │   │   ├── description
+│   │   │   │   ├── HEAD
+│   │   │   │   ├── hooks
+│   │   │   │   │   ├── applypatch-msg.sample
+│   │   │   │   │   ├── commit-msg.sample
+│   │   │   │   │   ├── fsmonitor-watchman.sample
+│   │   │   │   │   ├── post-update.sample
+│   │   │   │   │   ├── pre-applypatch.sample
+│   │   │   │   │   ├── pre-commit.sample
+│   │   │   │   │   ├── pre-merge-commit.sample
+│   │   │   │   │   ├── prepare-commit-msg.sample
+│   │   │   │   │   ├── pre-push.sample
+│   │   │   │   │   ├── pre-rebase.sample
+│   │   │   │   │   ├── pre-receive.sample
+│   │   │   │   │   └── update.sample
+│   │   │   │   ├── index
+│   │   │   │   ├── info
+│   │   │   │   │   └── exclude
+│   │   │   │   ├── logs
+│   │   │   │   │   ├── HEAD
+│   │   │   │   │   └── refs
+│   │   │   │   │       ├── heads
+│   │   │   │   │       │   └── master
+│   │   │   │   │       └── remotes
+│   │   │   │   │           └── origin
+│   │   │   │   │               └── HEAD
+│   │   │   │   ├── objects
+│   │   │   │   │   ├── info
+│   │   │   │   │   └── pack
+│   │   │   │   │       ├── pack-7d79a94a7962dbd2af185d6559c6c25f510aa73e.idx
+│   │   │   │   │       └── pack-7d79a94a7962dbd2af185d6559c6c25f510aa73e.pack
+│   │   │   │   ├── packed-refs
+│   │   │   │   └── refs
+│   │   │   │       ├── heads
+│   │   │   │       │   └── master
+│   │   │   │       ├── remotes
+│   │   │   │       │   └── origin
+│   │   │   │       │       └── HEAD
+│   │   │   │       └── tags
+│   │   │   ├── .github
+│   │   │   │   └── workflows
+│   │   │   │       └── pre-commit.yml
+│   │   │   ├── .gitignore
+│   │   │   ├── LICENSE
+│   │   │   ├── main.tf
+│   │   │   ├── Makefile
+│   │   │   ├── outputs.tf
+│   │   │   ├── .pre-commit-config.yaml
+│   │   │   ├── README.md
+│   │   │   ├── variables.tf
+│   │   │   └── versions.tf
+│   │   └── modules.json
+│   └── providers
+│       └── registry.terraform.io
+│           └── hashicorp
+│               └── aws
+│                   └── 3.63.0
+│                       └── linux_amd64
+│                           └── terraform-provider-aws_v3.63.0_x5
+├── .terraform.lock.hcl
+├── terraform.tfstate
+├── terraform.tfstate.backup
+└── variables.tf
+
+33 directories, 62 files
+root@terraformworkstation:~/terraform-aws/modules/s3-module#
+```

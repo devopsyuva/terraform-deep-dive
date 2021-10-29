@@ -24,5 +24,8 @@ variable "inst_count" {
 variable "tag_name" {
     description = "Default tag will be added to all resource when used"
     type = string
-    default = "terraform-webapp-demo"
+    default = {
+        Name = "Nginx-server"
+        Env  = "Web-Application"
+    }
 }
