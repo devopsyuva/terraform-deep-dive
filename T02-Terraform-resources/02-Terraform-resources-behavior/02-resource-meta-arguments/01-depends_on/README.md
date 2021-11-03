@@ -1,5 +1,5 @@
 # depends_on demo creation flow
-- Create key to ssh into instance from our machine in AWS console
+- Create ssh key for instance to login from our machine in AWS console
 - Create VPC
 - Create Subnets (Public and Private)
 - Create Internet Gateway and attach it to VPC
