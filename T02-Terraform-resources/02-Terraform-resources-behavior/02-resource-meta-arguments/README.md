@@ -10,7 +10,26 @@
     - prevent_destroy
     - ignore_changes
   - **provisioners & connections:** For taking extra actions after resource creation (Example: install some app on server or do something on local desktop after resource is created at remote destination)
+- When to use **for_each** instead of **count**?
+  - If your instances are almost identical, count is appropriate. If some of their arguments need distinct values that can't be directly derived from an integer, it's safer to use for_each.
+  ```
+  variable "subnet_ids" {
+    type = list(string)
+  }
 
+  resource "aws_instance" "server" {
+    # Create one instance for each subnet
+    count = length(var.subnet_ids)
+
+    ami           = "ami-a1b2c3d4"
+    instance_type = "t2.micro"
+    subnet_id     = var.subnet_ids[count.index]
+
+    tags = {
+      Name = "Server ${count.index}"
+    }
+  }
+  ```
 # Multiple Provisioners of various types
 - By default, prvisioners run when the resources are defined with in created.
 - Creation-time provisioners only run during creation, not during updating or any other lifecycle.

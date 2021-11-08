@@ -128,3 +128,19 @@ module "consul" {
   servers = 3
 }
 ```
+
+## Terraform Credentials Block
+- 
+```
+credentials "app.terraform.io" {
+    # valid user API token:
+    token = "xxxxxx.atlasv1.zzzzzzzzzzzzz"
+}
+module "instance_vpc" {
+  source  = "app.terraform.io/visualpath-demo/instance_vpc/aws"
+  version = "1.0.1"
+}
+```
+
+#### References:
+- [credentials block](https://www.terraform.io/docs/cli/config/config-file.html)

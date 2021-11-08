@@ -35,6 +35,7 @@ terraform apply -auto-approve
 - depends_on
 
 # Terrform get for modules
+- The terraform get command is used to download and update modules mentioned in the root module.
 - Both the **terraform get and terraform init** commands will install and update modules.
 - The **terraform init** command will also initialize backends and install plugins.
 ```
@@ -48,5 +49,6 @@ ls -lrt .terraform/modules
 ```
 
 ### References
--[Module Meta-arguments](https://www.terraform.io/docs/language/meta-arguments/module-providers.html)
--[Terraform get](https://www.terraform.io/docs/cli/commands/get.html)
+- [Module Development](https://www.terraform.io/docs/language/modules/develop/index.html)
+- [Module Meta-arguments](https://www.terraform.io/docs/language/meta-arguments/module-providers.html)
+- [Terraform get](https://www.terraform.io/docs/cli/commands/get.html)

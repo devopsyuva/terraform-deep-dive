@@ -53,6 +53,7 @@ terraform validate
 ```
 terraform plan
 ```
+- The plan represents the changes that Terraform needs to make to infrastructure to reach the desired state represented by the configuration.
 - terraform plan command can be execute after corrections made in our configuration files if needed and see it shows expected results.
 - we can execute command before creation, destory, up-date.
 - Reading the current state of any already-existing remote objects to make sure that the Terraform state is up-to-date.

@@ -45,6 +45,20 @@ resource "aws_instance" "web" {
 Note:
 It will not be delete resource, even after executing #terraform destroy command.
 To avoid accidental deletion of resource we can add above lifecycle.
+
+Output for Above lifecycle Meta-argument:
+root@terraformworkstation:~/terraform-aws/day6# terraform destroy
+aws_instance.web: Refreshing state... [id=i-01666d56f858ecf31]
+╷
+│ Error: Instance cannot be destroyed
+│
+│   on instances.tf line 1:
+│    1: resource "aws_instance" "web" {
+│
+│ Resource aws_instance.web has lifecycle.prevent_destroy set, but the plan calls for this resource to be destroyed. To avoid this error and continue with the plan, either
+│ disable lifecycle.prevent_destroy or reduce the scope of the plan using the -target flag.
+╵
+root@terraformworkstation:~/terraform-aws/day6#
 ```
 - **ignore_changes**
 ```
@@ -64,8 +78,32 @@ resource "aws_instance" "web" {
       ]
   }
 }
+
+resource "aws_instance" "web" {
+  ami           = "ami-0c2b8ca1dad447f8a"
+  instance_type = "t2.micro"
+  availability_zone = "us-east-1a"
+  #availability_zone = "us-east-1c"
+
+  tags = {
+    "Name" = "WebApp-terraform"
+  }
+  lifecycle {
+    ignore_changes = [
+      ami,
+      tags,
+    ]
+  }
+}
 Note:
 It will not update the changes specified in the list of ignore_changes.
 This will be useful for unwanted changes.
 If some manual changes are added and that should not get effected by terraform to recreate/destroy, we can use ignore.
+
+root@terraformworkstation:~/terraform-aws/day6# terraform plan
+aws_instance.web: Refreshing state... [id=i-01666d56f858ecf31]
+
+No changes. Your infrastructure matches the configuration.
+
+Terraform has compared your real infrastructure against your configuration and found no differences, so no changes are needed.
 ```

@@ -12,7 +12,7 @@ resource "aws_s3_bucket" "s3demobucket" {
   acl = "private"
 
   tags = {
-    Name = "${each.key}-${each.key}"
+    Name = "${each.key}-${each.value}"
     Eachvalue = each.value
     Eachkey = each.key
   }
