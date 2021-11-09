@@ -13,17 +13,17 @@ root@ubuntuserverdocker:~#
 
 2) Download terraform zip file
 ```
-root@ubuntuserverdocker:~# wget https://releases.hashicorp.com/terraform/1.0.3/terraform_1.0.3_linux_amd64.zip
---2021-08-02 05:16:15--  https://releases.hashicorp.com/terraform/1.0.3/terraform_1.0.3_linux_amd64.zip
+root@ubuntuserverdocker:~# wget https://releases.hashicorp.com/terraform/1.0.10/terraform_1.0.10_linux_amd64.zip
+--2021-08-02 05:16:15--  https://releases.hashicorp.com/terraform/1.0.10/terraform_1.0.10_linux_amd64.zip
 Resolving releases.hashicorp.com (releases.hashicorp.com)... 199.232.253.183, 2a04:4e42:fd3::439
 Connecting to releases.hashicorp.com (releases.hashicorp.com)|199.232.253.183|:443... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 32406882 (31M) [application/zip]
-Saving to: ‘terraform_1.0.3_linux_amd64.zip’
+Saving to: ‘terraform_1.0.10_linux_amd64.zip’
 
-terraform_1.0.3_linux_amd64. 100%[==============================================>]  30.91M  3.38MB/s    in 9.1s
+terraform_1.0.10_linux_amd64. 100%[==============================================>]  30.91M  3.38MB/s    in 9.1s
 
-2021-08-02 05:16:25 (3.41 MB/s) - ‘terraform_1.0.3_linux_amd64.zip’ saved [32406882/32406882]
+2021-08-02 05:16:25 (3.41 MB/s) - ‘terraform_1.0.10_linux_amd64.zip’ saved [32406882/32406882]
 root@ubuntuserverdocker:~#
 ```
 
@@ -52,21 +52,21 @@ Processing triggers for man-db (2.9.1-1) ...
 root@ubuntuserverdocker:~# ls -l
 total 31652
 drwxr-xr-x 3 root root     4096 Aug  2 02:05 snap
--rw-r--r-- 1 root root 32406882 Jul 21 18:49 terraform_1.0.3_linux_amd64.zip
-root@ubuntuserverdocker:~# unzip terraform_1.0.3_linux_amd64.zip
-Archive:  terraform_1.0.3_linux_amd64.zip
+-rw-r--r-- 1 root root 32406882 Jul 21 18:49 terraform_1.0.10_linux_amd64.zip
+root@ubuntuserverdocker:~# unzip terraform_1.0.10_linux_amd64.zip
+Archive:  terraform_1.0.10_linux_amd64.zip
   inflating: terraform
 root@ubuntuserverdocker:~# ls -lrt
 total 108196
 -rwxr-xr-x 1 root root 78380697 Jul 21 18:22 terraform
--rw-r--r-- 1 root root 32406882 Jul 21 18:49 terraform_1.0.3_linux_amd64.zip
+-rw-r--r-- 1 root root 32406882 Jul 21 18:49 terraform_1.0.10_linux_amd64.zip
 root@ubuntuserverdocker:~# mv terraform /usr/local/bin/
 ```
 
 4) Now check the terraform version
 ```
 root@ubuntuserverdocker:~# terraform --version
-Terraform v1.0.3
+Terraform v1.0.10
 on linux_amd64
 root@ubuntuserverdocker:~#
 ```
