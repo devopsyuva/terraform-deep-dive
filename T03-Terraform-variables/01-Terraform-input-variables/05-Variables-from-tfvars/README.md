@@ -8,7 +8,7 @@
 
 #Scenario 2 with ec2.tfvars
 >terraform plan -var-file=ec2.tfvars --> Check if values are loaded from file "ec2.tfvars"
->terraform apply -var-file=ec2-tfvars
+>terraform apply -var-file=ec2.tfvars
 
 #Scenario 3 with ec2.auto.tfvars
 >terraform plan

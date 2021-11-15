@@ -19,6 +19,23 @@
 - **description** - This specifies the input variable's documentation.
 - **validation** - A block to define validation rules, usually in addition to type constraints.
 - **sensitive** - Limits Terraform UI output when the variable is used in configuration.
+```
+variable "aws_region" {
+    description = "Region on which resources will be created"
+    type = string
+    default = "us-east-1"
+    sensitive = true
+}
+variable "image_id" {
+  type        = string
+  description = "The id of the machine image (AMI) to use for the server."
+
+  validation {
+    condition     = length(var.image_id) > 4 && substr(var.image_id, 0, 4) == "ami-"
+    error_message = "The image_id value must be a valid AMI id, starting with \"ami-\"."
+  }
+}
+```
 
 # Terraform Variable Definition Precendence
 - Terraform loads variables in the following order, with later sources taking precedence over earlier ones:

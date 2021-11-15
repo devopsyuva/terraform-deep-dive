@@ -13,13 +13,17 @@ variable "ami_name" {
   type        = string
   default     = "ami-0c2b8ca1dad447f8a"
 }
+#variable "inst_type" {
+#  description = "Instance type used to launch EC2 Instance"
+#  type        = list(string)
+#  default     = [ "t2.micro", "t2.small", "t2.large" ]
+#}
 variable "inst_type" {
   description = "Instance type used to launch EC2 Instance"
-  type        = string
-  default     = "t2.micro"
-}
-variable "inst_count" {
-  description = "No of EC2 instances that need to launched"
-  type        = number
-  default     = 1
+  type        = map(string)
+  default = {
+    "dev"     = "t2.micro"
+    "staging" = "t2.small"
+    "prod"    = "t2.large"
+  }
 }
