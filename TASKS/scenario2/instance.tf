@@ -1,0 +1,26 @@
+resource "aws_instance" "web" {
+  ami                         = var.ami_name //ami-0c2b8ca1dad447f8a
+  instance_type               = "${lookup(var.inst_type, var.environment, "Provide valid environment name")}"
+  availability_zone           = var.az_name
+  key_name                    = "sudhams_virginia_demo"
+  associate_public_ip_address = true
+  vpc_security_group_ids      = [aws_security_group.allow_http_ssh.id]
+
+  tags = {
+    Name = "WebApp-terraform"
+  }
+}
+/*
+resource "aws_instance" "web" {
+  ami                         = var.ami_name //ami-0c2b8ca1dad447f8a
+  instance_type               = "${var.inst_type["${var.environment}"]}"
+  availability_zone           = var.az_name
+  key_name                    = "sudhams_virginia_demo"
+  associate_public_ip_address = true
+  vpc_security_group_ids      = [aws_security_group.allow_http_ssh.id]
+
+  tags = {
+    Name = "WebApp-terraform"
+  }
+}
+*/
