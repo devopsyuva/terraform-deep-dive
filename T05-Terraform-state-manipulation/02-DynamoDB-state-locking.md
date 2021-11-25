@@ -38,6 +38,32 @@ Initializing the backend...
 │ If you wish to store the current configuration with no changes to the state, use "terraform init -reconfigure".
 ╵
 ```
+
+- Below error shows that, one process has already initiated to apply the changes.
+```
+root@terraformworkstationdemo:~/terraform-aws/state-manipulation/remote-storage# terraform plan
+Acquiring state lock. This may take a few moments...
+╷
+│ Error: Error acquiring the state lock
+│
+│ Error message: ConditionalCheckFailedException: The conditional request failed
+│ Lock Info:
+│   ID:        768eef51-a477-650f-d106-79bddffcfc19
+│   Path:      terraform-statefiles-sudheer/terraform.tfstate
+│   Operation: OperationTypeApply
+│   Who:       root@terraformworkstationdemo
+│   Version:   1.0.9
+│   Created:   2021-11-22 15:22:34.402430024 +0000 UTC
+│   Info:
+│
+│
+│ Terraform acquires a state lock to protect the state from being written
+│ by multiple users at the same time. Please resolve the issue above and try
+│ again. For most commands, you can disable locking with the "-lock=false"
+│ flag, but this is not recommended.
+╵
+root@terraformworkstationdemo:~/terraform-aws/state-manipulation/remote-storage#
+```
 ```
 root@terraformworkstation:~/terraform-aws/state-locking# terraform plan
 Acquiring state lock. This may take a few moments...
@@ -57,4 +83,53 @@ Acquiring state lock. This may take a few moments...
 │ again. For most commands, you can disable locking with the "-lock=false"
 │ flag, but this is not recommended.
 ╵
+```
+- Common issue, if we cancel the task either #terraform plan/apply when state locking is acquired. How to resolve it?
+```
+root@terraformworkstationdemo:~/terraform-aws/state-manipulation/remote-storage# terraform plan
+Acquiring state lock. This may take a few moments...
+╷
+│ Error: Error acquiring the state lock
+│
+│ Error message: ConditionalCheckFailedException: The conditional request failed
+│ Lock Info:
+│   ID:        0febad49-d6ec-4ce5-a84a-ff0b54d0712a
+│   Path:      terraform-statefiles-sudheer/terraform.tfstate
+│   Operation: OperationTypeApply
+│   Who:       root@terraformworkstationdemo
+│   Version:   1.0.9
+│   Created:   2021-11-23 15:35:01.258366319 +0000 UTC
+│   Info:
+│
+│
+│ Terraform acquires a state lock to protect the state from being written
+│ by multiple users at the same time. Please resolve the issue above and try
+│ again. For most commands, you can disable locking with the "-lock=false"
+│ flag, but this is not recommended.
+╵
+
+root@terraformworkstationdemo:~/terraform-aws/state-manipulation/remote-storage# terraform force-unlock 0febad49-d6ec-4ce5-a84a-ff0b54d0712a
+Do you really want to force-unlock?
+  Terraform will remove the lock on the remote state.
+  This will allow local Terraform commands to modify this state, even though it
+  may be still be in use. Only 'yes' will be accepted to confirm.
+
+  Enter a value: yes
+
+Terraform state has been successfully unlocked!
+
+The state has been unlocked, and Terraform commands should now be able to
+obtain a new lock on the remote state.
+
+root@terraformworkstationdemo:~/terraform-aws/state-manipulation/remote-storage# terraform plan
+Acquiring state lock. This may take a few moments...
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+...
+...
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
+Releasing state lock. This may take a few moments...
+root@terraformworkstationdemo:~/terraform-aws/state-manipulation/remote-storage#
 ```

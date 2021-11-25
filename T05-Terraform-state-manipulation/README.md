@@ -53,7 +53,7 @@ provider "aws" {
 
 ## Terraform Backend Types
 - Enhanced and Standard Backends
-- **Enhanced Backends:** can perform two tasks like store state and perform operations. Thefre are two enhanced backends: **local and remote.**
+- **Enhanced Backends:** can perform two tasks like store state and perform operations. There are two enhanced backends: **local and remote.**
   - Examples: Terraform Cloud and Terraform Enterprise
 - **Standard Backends:** they only store state, and rely on the local backend for performing operations.
   - Examples: AWS S3, Azure RM, Consul, ETCD, and etc.,

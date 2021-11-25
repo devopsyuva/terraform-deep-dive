@@ -21,3 +21,30 @@ It also renames the name of the resource in the state file Always run #terraform
 
 #terraform state replace-provider hashicorp/aws registry.acme.corp/acme/aws
 ```
+
+- Terraform move sample output
+```
+root@terraformworkstationdemo:~/terraform-aws/state-manipulation/remote-storage# terraform state mv aws_instance.web aws_instance.demo
+Acquiring state lock. This may take a few moments...
+Move "aws_instance.web" to "aws_instance.demo"
+Successfully moved 1 object(s).
+Releasing state lock. This may take a few moments...
+root@terraformworkstationdemo:~/terraform-aws/state-manipulation/remote-storage#
+```
+
+- Terraform remove resource handled through
+```
+root@terraformworkstationdemo:~/terraform-aws/state-manipulation/remote-storage# terraform state list
+aws_instance.demo[0]
+aws_instance.demo[1]
+aws_instance.demo[2]
+root@terraformworkstationdemo:~/terraform-aws/state-manipulation/remote-storage# terraform state rm aws_instance.demo[2]
+Acquiring state lock. This may take a few moments...
+Removed aws_instance.demo[2]
+Successfully removed 1 resource instance(s).
+Releasing state lock. This may take a few moments...
+root@terraformworkstationdemo:~/terraform-aws/state-manipulation/remote-storage# terraform state list
+aws_instance.demo[0]
+aws_instance.demo[1]
+root@terraformworkstationdemo:~/terraform-aws/state-manipulation/remote-storage#
+```
