@@ -37,3 +37,91 @@ terraform apply -auto-approve --> check in s3 bucket if two versions are availab
 
 ### Note:
 - Disable DynamoDB section for remote store for this initial demo
+
+## Terraform statefile migration
+```
+root@terraformworkstationdemo:~/terraform-aws/state-manipulation/disaster-recovery# tree -a
+.
+├── instance.tf
+├── provider.tf
+├── .terraform
+│   └── providers
+│       └── registry.terraform.io
+│           └── hashicorp
+│               └── aws
+│                   └── 3.67.0
+│                       └── linux_amd64
+│                           └── terraform-provider-aws_v3.67.0_x5
+├── .terraform.lock.hcl
+├── terraform.tfstate
+└── variables.tf
+
+7 directories, 6 files
+root@terraformworkstationdemo:~/terraform-aws/state-manipulation/disaster-recovery# cat provider.tf
+terraform {
+  required_version = ">= 1.0.3"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+  # S3 bucket for storing state file in remote backend
+  backend "s3" {
+    bucket         = "terraform-statefiles-sudheer"
+    key            = "terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-prod-statefile"
+  }
+}
+
+provider "aws" {
+  region  = var.aws_region
+  profile = "default"
+}
+root@terraformworkstationdemo:~/terraform-aws/state-manipulation/disaster-recovery#
+root@terraformworkstationdemo:~/terraform-aws/state-manipulation/disaster-recovery# terraform init
+
+Initializing the backend...
+Acquiring state lock. This may take a few moments...
+Do you want to copy existing state to the new backend?
+  Pre-existing state was found while migrating the previous "local" backend to the
+  newly configured "s3" backend. No existing state was found in the newly
+  configured "s3" backend. Do you want to copy this state to the new "s3"
+  backend? Enter "yes" to copy and "no" to start with an empty state.
+
+  Enter a value: yes
+
+Releasing state lock. This may take a few moments...
+
+Successfully configured the backend "s3"! Terraform will automatically
+use this backend unless the backend configuration changes.
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/aws from the dependency lock file
+- Using previously-installed hashicorp/aws v3.67.0
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+root@terraformworkstationdemo:~/terraform-aws/state-manipulation/disaster-recovery# cat terraform.tfstate
+root@terraformworkstationdemo:~/terraform-aws/state-manipulation/disaster-recovery# cat terraform.tfstate.backup
+{
+  "version": 4,
+...
+...
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMCwidXBkYXRlIjo2MDAwMDAwMDAwMDB9LCJzY2hlbWFfdmVyc2lvbiI6IjEifQ=="
+        }
+      ]
+    }
+  ]
+}
+root@terraformworkstationdemo:~/terraform-aws/state-manipulation/disaster-recovery#
+```
