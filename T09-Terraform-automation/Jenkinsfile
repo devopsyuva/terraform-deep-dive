@@ -80,6 +80,7 @@ pipeline {
         stage('Terraform Destroy') {
             steps {
                 sh 'terraform destroy -auto-approve'
+                input message: "Do you want to Distory, approve or discard?"
             }
         }
     }

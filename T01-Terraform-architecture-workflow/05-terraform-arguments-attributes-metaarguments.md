@@ -9,6 +9,7 @@
 # Terraform Meta-arguments
 - Meta-arguments change a resource's behavior, such as using a count meta-argument to create multiple resources.
 - Meta-arguments are a function of Terraform itself and are not resource or provider-specific.
+- Example: for_each, count, depends_on, provider, and life-cycle
 
 ## References
 - [Arguments](https://www.terraform.io/docs/language/syntax/configuration.html#arguments)
