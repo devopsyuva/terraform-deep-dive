@@ -3,7 +3,7 @@ resource "aws_instance" "web" {
   instance_type = var.inst_type
   count = var.inst_count
   availability_zone = var.az_name
-  user_data = file(nginx-install.sh)
+  user_data = file("nginx-install.sh")
   vpc_security_group_ids = [aws_security_group.vpc-ssh-web.id]
 
   tags = {

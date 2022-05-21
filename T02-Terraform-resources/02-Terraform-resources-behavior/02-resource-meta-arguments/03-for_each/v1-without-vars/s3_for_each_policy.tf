@@ -33,6 +33,24 @@ POLICY
 
 resource "aws_s3_bucket_acl" "example_bucket_acl" {
   for_each = {for k, v in aws_s3_bucket.s3demobucket : k => v.id}
+  # [for <KEY>, <VALUE> in <MAP> : <OUTPUT>]
   bucket = "${each.value}"
   acl    = "public-read"
 }
+/*
+output "key_value_data" {
+  value = {for k, v in aws_s3_bucket.s3demobucket : k => v.id}
+}
+
+output "all_details" {
+  value = values(aws_s3_bucket.s3demobucket)[*].arn
+}
+
+output "key_value_info" {
+  value = aws_s3_bucket.s3demobucket
+}
+
+output "key_filtered_data" {
+  value = [for name in var.names : upper(name) if length(name) < 5]
+}
+*/

@@ -28,3 +28,6 @@ resource "aws_instance" "web" {
     working_dir = "local-exec-output-files/"
   }
 }
+/*
+- [local-exec](https://www.terraform.io/language/resources/provisioners/local-exec#argument-reference)
+*/

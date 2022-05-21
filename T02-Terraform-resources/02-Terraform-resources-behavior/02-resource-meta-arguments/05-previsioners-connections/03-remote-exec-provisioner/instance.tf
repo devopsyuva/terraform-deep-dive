@@ -28,3 +28,6 @@ resource "aws_instance" "web" {
     ]
   }
 }
+/*
+- [Provisioner connection](https://www.terraform.io/language/resources/provisioners/connection)
+*/

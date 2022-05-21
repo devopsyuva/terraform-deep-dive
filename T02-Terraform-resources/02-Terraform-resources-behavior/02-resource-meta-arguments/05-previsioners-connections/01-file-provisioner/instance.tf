@@ -32,3 +32,25 @@ resource "aws_instance" "web" {
   }
   */
 }
+/*
+Error:
+╷
+│ Error: file provisioner error
+│
+│   with aws_instance.web[0],
+│   on instance.tf line 16, in resource "aws_instance" "web":
+│   16:   provisioner "file" {
+│
+│ timeout - last error: SSH authentication failed (ubuntu@100.24.8.102:22): ssh: handshake failed: ssh: unable to authenticate,
+│ attempted methods [none publickey], no supported methods remain
+╵
+Reference:
+https://www.terraform.io/language/resources/provisioners/connection#argument-reference
+*/
+/*
+source: The source file or directory
+content: A direct content to copy on the destination. This argument cannot be combined with source
+destination: (Required) The destination path to write to on the remote system
+- [Provisioner Arguments](https://www.terraform.io/language/resources/provisioners/file#argument-reference)
+- [Reference](https://github.com/heldersepu/hs-scripts/blob/master/TerraForm/ec2_ubuntu.tf#L21)
+*/
