@@ -1,4 +1,4 @@
-local {
+locals {
     envionment-name = "${var.tag_name}"
 }
 variable "aws_region" {
@@ -23,7 +23,7 @@ variable "inst_count" {
 }
 variable "tag_name" {
     description = "Default tag will be added to all resource when used"
-    type = string
+    type = map(string)
     default = {
         Name = "Nginx-server"
         Env  = "Web-Application"

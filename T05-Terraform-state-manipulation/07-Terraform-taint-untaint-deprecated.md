@@ -2,6 +2,7 @@
 - These commands helps us to force recreate the resources.
 - **terraform taint** command manually marks a terraform managed resource as tainted, forcing it to be destroyed and recreated on the next apply.
 - This command is deprecated, because there are better alternatives available in Terraform v0.15.2 and later. See below for more details.
+- New option to use: terraform apply -replace="aws_instance.example[0]"
 - **terraform untaint**
   - The terraform untaint command manually unmarks a terraform managed resource as tainted, forcing it to be destroyed and recreated on the next apply.
   - This reverses either a manual terraform taint or the result of provisioners failing on a resource.

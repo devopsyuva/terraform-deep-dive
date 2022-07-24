@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+    stages {
+        stage('Setup parameters') {
+            steps {
+                script { 
+                    properties([
+                        parameters([
+                            choice(
+                                choices: ['Dev', 'Prod', 'Staging'], 
+                                name: 'ENVIRONMENT'
+                            ),
+                            booleanParam(
+                                defaultValue: true, 
+                                description: '', 
+                                name: 'BOOLEAN'
+                            ),
+                            text(
+                                defaultValue: '''
+                                this is a multi-line
+                                string parameter example
+                                to check how it works
+                                ''', 
+                                 name: 'EXECUTION-DATA'
+                            ),
+                            string(
+                                defaultValue: 'yes', 
+                                name: 'Destroy resource', 
+                                trim: true
+                            )
+                        ])
+                    ])
+                }
+            }
+        }
+    }   
+}

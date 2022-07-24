@@ -95,6 +95,19 @@ resource "aws_instance" "web" {
     ]
   }
 }
+# Terraform 0.12 and later syntax
+resource "aws_vpc" "example" {
+  # ... other configuration ...
+
+  tags = {
+    Name  = "MyVPC"
+    Owner = "Operations"
+  }
+
+  lifecycle {
+    ignore_changes = [tags.Name]
+  }
+}
 Note:
 It will not update the changes specified in the list of ignore_changes.
 This will be useful for unwanted changes.

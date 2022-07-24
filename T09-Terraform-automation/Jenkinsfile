@@ -58,7 +58,7 @@ pipeline {
         }
         stage('Terraform Format') {
             steps {
-                sh 'terraform fmt -check'
+                sh 'terraform fmt -check || exit 0' #terraform fmt -list=true -write=false -diff=true -check=true
             }
         }
         stage('Terraform Validate') {
@@ -79,9 +79,31 @@ pipeline {
         }
         stage('Terraform Destroy') {
             steps {
-                sh 'terraform destroy -auto-approve'
+                sh 'terraform destroy'
                 input message: "Do you want to Distory, approve or discard?"
             }
         }
     }
 }
+/*
+def fmtStatus = sh "terraform fmt -list=true -write=false -diff=true -check=true"
+if (fmtStatus == 0) {
+  echo "All correct"
+} else {
+  echo "Changes necessary"
+}
+*/
+/*
+stage('Deploy to Production') {
+    when {
+        expression { 
+            return params.ENVIRONMENT == 'PROD'
+        }
+    }
+    steps {
+        sh """
+        echo "deploy to production"
+        """
+    }
+}
+*/

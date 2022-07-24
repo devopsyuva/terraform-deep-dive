@@ -1,0 +1,25 @@
+---
+- hosts: localhost
+  become: yes
+  remote_user: ansibleuser
+  become_user: root
+  tasks:
+  - name: Update jenkins repository
+    lineinfile:
+      line: "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/"
+      path: /etc/apt/sources.list.d/jenkins.list
+      state: present
+
+  - name: Download Jenkins GPG key
+    ansible.builtin.apt_key:
+      url: https://pkg.jenkins.io/debian-stable/jenkins.io.key
+      file: /usr/share/keyrings/jenkins-keyring.asc
+
+  - name: Update apt Index
+    apt:
+      update_cache: yes
+
+  - name: Install Jenkins package
+    apt:
+      name: jenkins
+      state: latest

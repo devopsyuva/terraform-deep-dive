@@ -4,7 +4,7 @@ resource "aws_instance" "web" {
   availability_zone           = var.az_name
   count                       = terraform.workspace == "default" ? 1 : 2
   user_data                   = file("nginx-install.sh")
-  key_name                    = "sudhams_virginia_demo"
+  key_name                    = "awsdemokey"
   associate_public_ip_address = true
   vpc_security_group_ids      = [aws_security_group.allow_http_ssh.id]
 

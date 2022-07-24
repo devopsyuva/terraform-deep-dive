@@ -5,7 +5,7 @@
   - AWS Console --> DynamoDB --> Create table
   - Table details
     - Table name: terraform-prod-statefile
-    - Partition key(Primary Key): StatelockID (string)
+    - Partition key(Primary Key): LockID (string) # Do not add this as string StatelockID (string)
     - Settings: Default settings
   - click on Create table
 

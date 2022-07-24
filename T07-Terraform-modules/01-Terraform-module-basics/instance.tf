@@ -8,7 +8,7 @@ module "ec2_cluster" {
 
   ami                    = data.aws_ami.ubuntu_ami.id
   instance_type          = var.inst_type
-  key_name               = "sudhams_virginia_demo"
+  key_name               = "awsdemokey"
   monitoring             = true
   vpc_security_group_ids = [aws_security_group.allow_http_ssh.id]
   subnet_id              = "subnet-a3c120ef" # Get one public subnet id from default vpc and replace
