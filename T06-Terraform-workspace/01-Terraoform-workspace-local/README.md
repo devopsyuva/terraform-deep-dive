@@ -47,6 +47,9 @@ terraform workspace list
 #select workspace to switch to dev from default
 terraform workspace select dev
 
+#Create Resource for specified environment workspace
+terraform apply [-auto-approve]
+
 #Delete resources from default workspace
 terraform destroy [-auto-approve]
 

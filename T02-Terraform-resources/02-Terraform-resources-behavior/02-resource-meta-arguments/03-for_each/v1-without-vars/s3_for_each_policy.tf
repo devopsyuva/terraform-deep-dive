@@ -4,9 +4,9 @@ provided with key-value on AWS provider
 */
 resource "aws_s3_bucket" "s3demobucket" {
   for_each = {
-    dev  = "s3-dev-bucket"
-    test = "s3-test-bucket"
-    qa   = "s3-qa-bucket"
+    dev  = "s3-demo-bucket"
+    test = "s3-demo-bucket"
+    qa   = "s3-demo-bucket"
   }
   bucket = "${each.key}-${each.value}"
   policy = <<POLICY

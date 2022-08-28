@@ -25,5 +25,4 @@ EOF
     error_document = "error.html"
   }
   tags          = var.tags
-  force_destroy = true
 }
